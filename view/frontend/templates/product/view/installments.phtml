@@ -1,0 +1,36 @@
+<?php /** @noinspection PhpFullyQualifiedNameUsageInspection */
+/**
+ * @var \Magento\Framework\View\Element\Template $block
+ */
+/**
+ * @var \TheITNerd\UX\Helper\Installments $helper
+ */
+$helper = $this->helper(\TheITNerd\UX\Helper\Installments::class);
+
+/**
+ * @var \Magento\Framework\Pricing\Helper\Data $priceHelper
+ */
+$priceHelper = $this->helper('Magento\Framework\Pricing\Helper\Data');
+
+?>
+<div class="product-installments">
+    <h3><?= __('Installments') ?></h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th><?= __('Installments') ?></th>
+                <th><?= __('Value') ?></th>
+                <th><?= __('Total') ?></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach($helper->getInstallments($block->getProduct()->getFinalPrice()) as $installment): ?>
+            <tr <?php if($installment['has_interest']):?> class="width-interest" <?php endif; ?>>
+                <td><?= $installment['installment'] ?><?php if($installment['has_interest']):?>*<?php endif; ?></td>
+                <td><?= $priceHelper->currency($installment['value'],true,false) ?></td>
+                <td><?= $priceHelper->currency($installment['total'],true,false) ?></td>
+            </tr>
+            <?php endforeach;?>
+        </tbody>
+    </table>
+</div>

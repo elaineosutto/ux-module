@@ -1,0 +1,53 @@
+<div attr="data.main.attributes" css="data.main.css" ko-style="data.main.style">
+    <form data-mage-init='{"validation": {}, "loader": {}}' class="form">
+        <div class="fieldset">
+            <div class="field required">
+                <label class="label" data-bind="i18n: 'Name'"></label>
+                <div class="control">
+                    <input type="text" name="name" class="input-text required-entry" >
+                </div>
+            </div>
+
+            <div class="field email required">
+                <label class="label" data-bind="i18n: 'E-mail'"></label>
+                <div class="control">
+                    <input type="email" name="email" class="input-text required-entry">
+                </div>
+            </div>
+
+            <div class="field required">
+                <label class="label" data-bind="i18n: 'Phone'"></label>
+                <div class="control">
+                    <input type="text" name="phone" class="input-text required-entry" >
+                </div>
+            </div>
+
+            <div class="field required">
+                <label class="label" data-bind="i18n: 'Subject'"></label>
+                <div class="control">
+                    <input type="text" name="subject" class="input-text required-entry" >
+                </div>
+            </div>
+
+            <div class="field required">
+                <label class="label"  data-bind="i18n: 'Message'"></label>
+                <div class="control">
+                    <textarea name="message" class="input-text required-entry" ></textarea>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label" data-bind="i18n: 'File'"></label>
+                <div class="control">
+                    <input type="file" name="file" class="input-file validate-email-attachment" />
+                </div>
+            </div>
+
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button type="button" class="action action-send" name="send" data-bind="i18n: 'Send'"></button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,25 @@
+<?php
+/**
+ * @var \Magento\Framework\View\Element\Template $block
+ */
+?>
+
+<div onclick="location.href='<?= $block->getUrl('customer/account') ?>'" class="customer-menu" data-bind="scope: 'customerMenu'">
+    <div class="customer-menu--icon"></div>
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+
+<script type="text/x-magento-init" >
+        {
+            "*" : {
+                "Magento_Ui/js/core/app" : {
+                    "components" : {
+                        "customerMenu" : {
+                            "component": "TheITNerd_UX/js/view/customer/menu",
+                            "template" : "TheITNerd_UX/customer/menu"
+                        }
+                    }
+                }
+            }
+        }
+</script>

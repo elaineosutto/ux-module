@@ -1,0 +1,52 @@
+<div class="customer-menu--modal">
+    <!-- ko if: isLoggedIn() -->
+    <div class="customer-menu--modal--description">
+        <div class="customer-menu--modal--description--customer-data">
+            <div class="customer-menu--modal--description--customer-data--avatar">
+                <img data-bind="attr: {src: 'https://www.gravatar.com/avatar/'+customer().email_hash}" />
+            </div>
+            <div class="customer-menu--modal--description--customer-data--name">
+                <span data-bind="text: customer().fullname"> </span>
+                <span data-bind="text: customer().email"> </span>
+            </div>
+        </div>
+        <!-- ko if: hasPoints() -->
+        <div class="customer-menu--modal--description--reward-points">
+            <div class="customer-menu--modal--description--reward-points--points">
+                <label data-bind="i18n: 'Reward Points'"></label>
+                <span data-bind="text: rewardPoints().points_balance"></span>
+            </div>
+            <div class="customer-menu--modal--description--reward-points--currency">
+                <label data-bind="i18n: 'Reward Currency'"></label>
+                <span data-bind="text: rewardPoints().currency_balance"></span>
+            </div>
+        </div>
+        <!-- /ko -->
+        <!-- ko if: hasStoreCredit() -->
+        <div class="customer-menu--modal--description--store-credit">
+            <div class="customer-menu--modal--description--store-credit--balance">
+                <label data-bind="i18n: 'Store Credit'"></label>
+                <span data-bind="text: storeCredit().balance"></span>
+            </div>
+        </div>
+        <!-- /ko -->
+    </div>
+    <div class="customer-menu--modal--links">
+        <ul>
+            <!-- ko foreach: links -->
+            <li><a data-bind="i18n: label, attr: {href: link}"></a></li>
+            <!-- /ko -->
+        </ul>
+    </div>
+    <!-- /ko -->
+
+    <!-- ko ifnot: isLoggedIn() -->
+        <div class="customer-menu--modal--links">
+            <ul>
+                <!-- ko foreach: guestLinks -->
+                <li><a data-bind="i18n: label, attr: {href: link}"></a></li>
+                <!-- /ko -->
+            </ul>
+        </div>
+    <!-- /ko -->
+</div>

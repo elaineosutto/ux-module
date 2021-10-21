@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <contact>
+            <email>
+                <email_template_widget>theitnerd_ux_contact_form_email_template</email_template_widget>
+            </email>
+        </contact>
+        <customer>
+            <address>
+                <street_lines>3</street_lines>
+            </address>
+        </customer>
+        <theitnerd_customer>
+            <menu>
+                <active>1</active>
+            </menu>
+        </theitnerd_customer>
+        <theitnerd_catalog>
+            <shipping>
+                <pdp_active>1</pdp_active>
+            </shipping>
+            <installments>
+                <active>1</active>
+                <minimum_installment>50</minimum_installment>
+                <maximum_installments>12</maximum_installments>
+                <interest>1.99</interest>
+                <no_interest_installments>3</no_interest_installments>
+            </installments>
+        </theitnerd_catalog>
+        <theitnerd_newsletter>
+            <privacy_policy>
+                <active>1</active>
+                <privacy_policy_text>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec commodo lectus non efficitur rhoncus. Quisque porttitor nulla vel nulla elementum, sit amet viverra sapien suscipit. Donec porttitor convallis tortor, sed vehicula nibh tristique eget. Maecenas feugiat elit lacus, sed dignissim mi rutrum in. Nulla facilisi. Donec aliquet ut felis in mollis. Etiam laoreet et lorem sit amet scelerisque.</privacy_policy_text>
+            </privacy_policy>
+        </theitnerd_newsletter>
+    </default>
+</config>

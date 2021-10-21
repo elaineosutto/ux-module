@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route method="GET" url="/V1/searchAddress/">
+        <service class="TheITNerd\UX\Api\ZipSearchInterface" method="searchAddress" />
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+
+    <route method="GET" url="/V1/searchZIP/">
+        <service class="TheITNerd\UX\Api\ZipSearchInterface" method="searchZIPCode" />
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+
+    <route method="GET" url="/V1/product/calculate/shipping/">
+        <service class="TheITNerd\UX\Api\CalculateCarriersRatesInterface" method="calculateCarriersRates" />
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+
+    <route method="POST" url="/V1/sendmail/">
+        <service class="TheITNerd\UX\Api\SendMailInterface" method="sendMail" />
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+</routes>

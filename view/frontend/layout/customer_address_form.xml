@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="customer_address_edit">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">TheITNerd_UX::customer/address/edit.phtml</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="customer.address.form.masks" template="TheITNerd_UX::customer/address/masks.phtml" before="customer.address.form.zipsearch" />
+            <block class="Magento\Framework\View\Element\Template" name="customer.address.form.zipsearch" template="TheITNerd_UX::customer/address/zipSearch.phtml" after="-" />
+        </referenceContainer>
+    </body>
+</page>

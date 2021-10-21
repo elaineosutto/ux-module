@@ -1,0 +1,26 @@
+
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<input class="input-text" type="text" data-bind="
+    mageInit: {'TheITNerd_UX/js/inputMask': {'mask': '00000-000'}, 'TheITNerd_UX/js/zipSearch': {'form': {
+        'neighborhood': '[name=\'street[3]\']',
+        'complement': '[name=\'street[2]\']',
+        'number': '[name=\'street[1]\']',
+        'street': '[name=\'street[0]\']',
+    }}},
+    value: value,
+    valueUpdate: 'keyup',
+    hasFocus: focused,
+    attr: {
+        name: inputName,
+        placeholder: placeholder,
+        'aria-describedby': getDescriptionId(),
+        'aria-required': required,
+        'aria-invalid': error() ? true : 'false',
+        id: uid,
+        disabled: disabled
+    }" />

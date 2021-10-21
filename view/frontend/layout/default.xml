@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="checkout" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <link src="TheITNerd_UX::js/lib/lazyLoader.js" />
+    </head>
+    <body>
+        <referenceContainer name="header-wrapper">
+            <block class="Magento\Framework\View\Element\Template" ifconfig="theitnerd_customer/menu/active" name="ux_customer_menu" template="TheITNerd_UX::customer/menu.phtml" after="minicart" />
+        </referenceContainer>
+        <referenceBlock name="form.subscribe">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">TheITNerd_UX::newsletter/subscribe.phtml</argument>
+            </action>
+        </referenceBlock>
+    </body>
+</page>

@@ -1,0 +1,59 @@
+<form id="zipsearch-form" method="get" class="from-zip-search" data-mage-init='{"validation": {"required": true}}' data-bind='"event": {"submit": searchData}'>
+    <div class="field required field-region">
+        <label class="label" for="zipsearch-region"><span data-bind="'i18n': 'Region'"></span></label>
+        <div class="control">
+            <select id="zipsearch-region" name="region" class="required-entry" data-validate="{required: true}" aria-required="true">
+                <option data-bind="i18n: 'Please select a region'"></option>
+                <!-- ko foreach: options.regions -->
+                <option data-bind="text: name, attr: {value: code}"></option>
+                <!-- /ko -->
+            </select>
+        </div>
+    </div>
+    <div class="field required  field-city">
+        <label class="label" for="zipsearch-city"><span data-bind="i18n: 'City'"></span></label>
+        <div class="control">
+            <input type="text" id="zipsearch-city" name="city" value="" title="" class="input-text required-entry" data-validate="{required:true}" aria-required="true" />
+        </div>
+    </div>
+    <div class="field required  field-street">
+        <label class="label" for="zipsearch-street"><span data-bind="i18n: 'Street'"></span></label>
+        <div class="control">
+            <input type="text" id="zipsearch-street" name="street" value="" title="" class="input-text required-entry" data-validate="{required:true}" aria-required="true" />
+        </div>
+    </div>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button type="submit" class="action submit primary" data-action="save-address" title="">
+                <span data-bind="i18n: 'Search'"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="zipsearch-results">
+        <!-- ko if: hasData() -->
+        <table class="table">
+            <tr>
+                <th data-bind="i18n: 'Region'"></th>
+                <th data-bind="i18n: 'City'"></th>
+                <th data-bind="i18n: 'Neighborhood'"></th>
+                <th data-bind="i18n: 'Street'"></th>
+                <th data-bind="i18n: 'Complement'"></th>
+                <th data-bind="i18n: 'ZIP Code'"></th>
+            </tr>
+            <!-- ko foreach: result -->
+            <tr data-bind='"event": {"click": $parent.selectZip}'>
+                <td data-bind="text: uf"></td>
+                <td data-bind="text: localidade"></td>
+                <td data-bind="text: bairro"></td>
+                <td data-bind="text: logradouro"></td>
+                <td data-bind="text: complemento"></td>
+                <td data-bind="text: cep"></td>
+            </tr>
+            <!-- /ko -->
+        </table>
+        <!-- /ko -->
+
+    </div>
+
+</form>

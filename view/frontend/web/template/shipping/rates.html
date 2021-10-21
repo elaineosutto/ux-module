@@ -1,0 +1,19 @@
+<!-- ko if: model.isLoading -->
+<span class="isLoading" data-bind="i18n: 'Loading...'"></span>
+<!-- /ko -->
+<!-- ko ifnot: model.isLoading -->
+    <!-- ko if: hasData() -->
+        <table class="table table-rates">
+            <tr>
+                <th data-bind="i18n: 'Carrier'"></th>
+                <th data-bind="i18n: 'Cost'"></th>
+            </tr>
+            <!-- ko foreach: model.rates -->
+            <tr>
+                <td data-bind="text: title"></td>
+                <td data-bind="text: price"></td>
+            </tr>
+            <!-- /ko -->
+        </table>
+    <!-- /ko -->
+<! -- /ko -->

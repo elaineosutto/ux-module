@@ -1,0 +1,61 @@
+<?php /** @noinspection PhpFullyQualifiedNameUsageInspection */
+/**
+ * @var \Magento\Framework\View\Element\Template $block
+ */
+?>
+
+<div class="product-shipping">
+    <div class="product-shipping--form-wrapper">
+        <form id="product-shipping-estimate" action="" method="post" class="form-estimate" data-mage-init='{"validation":{"required":true}}'>
+            <input type="hidden" name="form_key" value="<?= $block->getFormKey() ?>" />
+            <div class="product-shipping--form-wrapper--fields">
+                <input type="text" id="product-shipping-postcode" name="postcode" data-mage-init='{"TheITNerd_UX/js/inputMask": {"mask": "00000-000"}, "TheITNerd_UX/js/shippingCalculator" : {}}'>
+                <button type="button" id="product-shipping-button" class="action primary"><?= __('OK') ?></button>
+            </div>
+        </form>
+
+        <a href="javascript:void(0)" class="search-zip-trigger" data-trigger="trigger-zip-search"><?= __('Search Postcode') ?></a>
+    </div>
+    <div class="rates-table" data-bind="scope: 'ratesTable'">
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    </div>
+
+    <div data-bind="mageInit: {
+        'Magento_Ui/js/modal/modal' :{
+            'type' : 'popup',
+            'title': '<?= __('Search Postcode') ?>',
+            'trigger': '[data-trigger=trigger-zip-search]',
+            'responsive' : true,
+            'modalClass': 'zip-code-search-modal',
+            'buttons': []
+        }
+       }">
+        <div class="content">
+            <div data-bind="scope: 'zipSearch'">
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            </div>
+        </div>
+    </div>
+
+    <script type="text/x-magento-init" >
+        {
+            "*" : {
+                "Magento_Ui/js/core/app" : {
+                    "components" : {
+                        "ratesTable" : {
+                            "component": "TheITNerd_UX/js/view/shipping/rates",
+                            "template" : "TheITNerd_UX/shipping/rates"
+                        },
+                        "zipSearch" : {
+                            "component": "TheITNerd_UX/js/view/shipping/zipSearch",
+                            "template" : "TheITNerd_UX/shipping/zipSearch",
+                            "options": {
+                                "regions" : <?= json_encode($this->helper(\TheITNerd\UX\Helper\Data::class)->getRegions()) ?>
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</div>

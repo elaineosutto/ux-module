@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- APIs Start -->
+    <preference for="TheITNerd\UX\Api\ZipSearchInterface" type="TheITNerd\UX\Model\Api\ZipSearch" />
+    <preference for="TheITNerd\UX\Api\CalculateCarriersRatesInterface" type="TheITNerd\UX\Model\Api\CalculateCarriersRates" />
+    <preference for="TheITNerd\UX\Api\SendMailInterface" type="TheITNerd\UX\Model\Api\SendMail" />
+    <!-- APIs End -->
+
+    <!-- Customer Data Start -->
+    <preference for="Magento\Customer\CustomerData\Customer" type="TheITNerd\UX\Rewrite\CustomerData\Customer" />
+    <!-- Customer Data End -->
+
+    <!-- Mega Menu Start-->
+    <preference for="Magento\Theme\Block\Html\Topmenu" type="TheITNerd\UX\Rewrite\Magento\Theme\Block\Html\Topmenu" />
+    <!-- Mega Menu End-->
+
+    <!-- Catalog 2 images Start-->
+    <preference for="Magento\Catalog\Block\Product\ImageFactory" type="TheITNerd\UX\Rewrite\Catalog\Block\Product\ImageFactory" />
+    <!-- Catalog 2 images End-->
+
+    <!-- Checkout customization Start-->
+    <type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
+        <plugin name="busca_cep_checkout" type="TheITNerd\UX\Plugin\Checkout\LayoutProcessor" sortOrder="100"/>
+    </type>
+    <!-- Checkout customization End-->
+
+    <!-- Upload SVG Start-->
+    <preference for="Magento\PageBuilder\Controller\Adminhtml\ContentType\Image\Upload" type="TheITNerd\UX\Rewrite\Controller\Adminhtml\ContentType\Image\Upload" />
+    <type name="Magento\Cms\Model\Wysiwyg\Images\Storage">
+        <arguments>
+            <argument name="extensions" xsi:type="array">
+                <item name="allowed" xsi:type="array">
+                    <item name="svg" xsi:type="string">image/svg</item>
+                    <item name="svg-xml" xsi:type="string">image/svg+xml</item>
+                </item>
+                <item name="image_allowed" xsi:type="array">
+                    <item name="svg" xsi:type="string">image/svg</item>
+                    <item name="svg-xml" xsi:type="string">image/svg+xml</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Magento\Catalog\CategoryImageUpload" type="Magento\Catalog\Model\ImageUploader">
+        <arguments>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="svg" xsi:type="string">svg</item>
+            </argument>
+            <argument name="allowedMimeTypes" xsi:type="array">
+                <item name="svg" xsi:type="string">image/svg</item>
+                <item name="svg-xml" xsi:type="string">image/svg+xml</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\MediaStorage\Model\File\Validator\NotProtectedExtension">
+        <plugin name="allow-svg" type="TheITNerd\UX\Plugin\File\Validator\NotProtectedExtensionPlugin" />
+    </type>
+    <type name="Magento\Cms\Model\Wysiwyg\Images\Storage">
+        <plugin name="allow-svg" type="TheITNerd\UX\Plugin\Wysiwyg\Images\StoragePlugin" />
+    </type>
+    <type name="Magento\Cms\Controller\Adminhtml\Wysiwyg\Images\Thumbnail">
+        <plugin name="allow-svg" type="TheITNerd\UX\Plugin\Controller\Adminhtml\Wysiwyg\Images\ThumbnailPlugin" />
+    </type>
+    <type name="Magento\Cms\Controller\Adminhtml\Wysiwyg\Directive">
+        <plugin name="allow-svg" type="TheITNerd\UX\Plugin\Controller\Adminhtml\Wysiwyg\DirectivePlugin" />
+    </type>
+
+    <type name="Magento\Theme\Model\Design\Backend\Logo">
+        <plugin name="allow-svg" type="TheITNerd\UX\Plugin\Design\Backend\ImagePlugin" />
+    </type>
+    <type name="Magento\Theme\Model\Design\Backend\Favicon">
+        <plugin name="allow-svg" type="TheITNerd\UX\Plugin\Design\Backend\ImagePlugin" />
+    </type>
+    <type name="Magento\Theme\Model\Design\Backend\Image">
+        <plugin name="allow-svg" type="TheITNerd\UX\Plugin\Design\Backend\ImagePlugin" />
+    </type>
+
+    <type name="Magento\MediaGallerySynchronization\Model\CreateAssetFromFile">
+        <arguments>
+            <argument name="assetFactory" xsi:type="object">TheITNerd\UX\Model\AssetFactory</argument>
+        </arguments>
+    </type>
+    <!-- Upload SVG End-->
+
+    <!-- Contact Form Page Builder Widget Start -->
+    <preference for="TheITNerd\UX\Api\MailInterface" type="TheITNerd\UX\Model\Mail\Send" />
+
+    <type name="Magento\PageBuilder\Model\WidgetInitializerConfig">
+        <arguments>
+            <argument name="config" xsi:type="array">
+                <item name="contact" xsi:type="array">
+                    <item name="default" xsi:type="array">
+                        <item name="component" xsi:type="string">TheITNerd_UX/js/content-type/contact/appearance/default/widget</item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="AppearanceSourceContactForm" type="Magento\PageBuilder\Model\Source\VisualSelect">
+        <arguments>
+            <argument name="optionsSize" xsi:type="string">large</argument>
+            <argument name="optionsData" xsi:type="array">
+                <item name="0" xsi:type="array">
+                    <item name="value" xsi:type="string">default</item>
+                    <item name="title" xsi:type="string" translate="true">Default</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <!-- Contact Form Page Builder Widget End -->
+
+</config>

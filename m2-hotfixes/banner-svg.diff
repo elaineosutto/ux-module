@@ -1,0 +1,11 @@
+--- a/vendor/magento/module-page-builder/view/adminhtml/pagebuilder/content_type/banner.xml	2021-01-07 14:33:48.000000000 -0300
++++ b/vendor/magento/module-page-builder/view/adminhtml/pagebuilder/content_type/banner.xml	2021-08-24 00:21:14.884686038 -0300
+@@ -370,7 +370,7 @@
+                 <item name="isShowImageUploadInstructions" xsi:type="boolean">false</item>
+                 <item name="isShowImageUploadOptions" xsi:type="boolean">true</item>
+                 <item name="maxFileSize" xsi:type="object">ImageMaxFileSizeDesktop</item>
+-                <item name="allowedExtensions" xsi:type="string">jpg jpeg gif png</item>
++                <item name="allowedExtensions" xsi:type="string">jpg jpeg gif png svg</item>
+                 <item name="component" xsi:type="string">Magento_PageBuilder/js/form/element/image-uploader</item>
+                 <item name="componentType" xsi:type="string">imageUploader</item>
+                 <item name="dataScope" xsi:type="string">background_image</item>
